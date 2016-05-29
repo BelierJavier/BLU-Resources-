@@ -4,7 +4,6 @@
   <head>
   
    <style>
-
     body {
       background: url("http://i.imgur.com/WJFzrOG.png");
       background-repeat: no-repeat;
@@ -24,6 +23,7 @@
         margin-left: 80px;
     }
     #fader {
+<<<<<<< HEAD
         margin-left:-27px;
     }
     #energy {
@@ -35,29 +35,48 @@
 
 
    </style>
+=======
+
+    }
+    #energy {
+        margin-left: -132px;
+    }
+    #logo {
+        margin-left:-290;
+    }
+    #changetype-all {
+    }
+    #changetype-establishment{ 
+    }
+    #changetype-address{
+    }
+    #changetype-geocode{
+    }
+   </style>
+    <label for="changetype-establishment">Establishments</label>
+>>>>>>> origin/master
     <span id="blue">Street Level</span>
     <img src="earth.gif~c200.gif" 
     alt="logo" 
     style="width:60px;height:60px;"
     id="logo">
-
-
-    <br>
-
     <br>
     <br>
     <br>
     <br>
     <br>
     <br>
-
+    <br>
     <span id="tap">Welcome to your personal helper for your travels! We will provide you with help on navigating your way through the city! You can search for the city that you're in, and we will also give you quick, and simple access to a translator for you to have easiest time navigating your way around the city.</span>
     <img src="fade.gif" 
     alt="fade" 
     style="width:120%;height:228px;"
     id="fader">
+<<<<<<< HEAD
 
 <script src="https://maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=AIzaSyCDt281_nqEyj9b0YQ2m2M1DSO-BW1y560"></script>
+=======
+>>>>>>> origin/master
   </head>
   <head>
   <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -70,7 +89,6 @@
   <style>
  html, body {
    height: 75%;
-
  }
  #map {
    height: 100%;
@@ -98,6 +116,7 @@
 </head>
 <body>
   <center>
+<<<<<<< HEAD
   {
    "dstOffset" : 3600,
    "rawOffset" : -18000,
@@ -119,6 +138,12 @@
 
       <input type="radio" name="type" id="changetype-geocode">
       <label for="changetype-geocode">Geocodes</label>
+=======
+  <input id="pac-input" class="controls" type="text"
+        placeholder="Enter a location">
+    <div id="type-selector" class="controls">
+    
+>>>>>>> origin/master
     </div>
     <div id="map"></div>
   <input id="name" placeholder="Name"></input><br>
@@ -128,8 +153,11 @@
 </body>
 <footer>
   
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
   <script>
 
    var map;
@@ -144,24 +172,16 @@
               var address = $("#address").val();
               var latitude = 0.0;
               var longitude = 0.0;
-
-
               geocoder.geocode( { 'address': address}, function(results, status) {
-
                if (status == google.maps.GeocoderStatus.OK) {
                       latitude = results[0].geometry.location.lat();
                  longitude = results[0].geometry.location.lng();
                       postMarker(latitude, longitude);
-
                }
-
               });
               postData($("#name").val(), $("#address").val());
               console.log(latitude);
-
-
           }
-
           function postMarker(latitude, longitude){
               var marker = new google.maps.Marker({
              position: {lat:latitude,lng:longitude},
@@ -170,13 +190,11 @@
            });
               marker.setMap(map);
               var infowindow = new google.maps.InfoWindow;
-
               infowindow.setContent($("#name").val());
               marker.addListener('click', function() {
                   infowindow.open(map, marker);
               });
           }
-
           function postData(name, address){
               $.ajax({
           url: "http://data.sparkfun.com/input/g6n8vV7bj7hdzga4AK4E",
@@ -198,6 +216,7 @@
   });
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('pac-input'));
+<<<<<<< HEAD
 
   var types = document.getElementById('type-selector');
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -206,12 +225,22 @@
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
 
+=======
+  var types = document.getElementById('type-selector');
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+>>>>>>> origin/master
   var infowindow = new google.maps.InfoWindow();
   var marker = new google.maps.Marker({
     map: map,
     anchorPoint: new google.maps.Point(0, -29)
   });
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
     marker.setVisible(false);
@@ -220,7 +249,10 @@
       window.alert("Autocomplete's returned place contains no geometry");
       return;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     // If the place has a geometry, then present it on a map.
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
@@ -237,7 +269,10 @@
     }));
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     var address = '';
     if (place.address_components) {
       address = [
@@ -246,7 +281,10 @@
         (place.address_components[2] && place.address_components[2].short_name || '')
       ].join(' ');
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
     infowindow.open(map, marker);
   });
@@ -255,6 +293,5 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDt281_nqEyj9b0YQ2m2M1DSO-BW1y560&libraries=places&callback=initMap"
  async defer></script>
 </footer>
-
  </body>
 </html> 
